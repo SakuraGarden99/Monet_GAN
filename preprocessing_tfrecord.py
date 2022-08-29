@@ -42,7 +42,6 @@ image_feature_description={
     'target' : tf.io.FixedLenFeature([], tf.int64)
 }
 
-
 def decode_image(image):
     image = tf.image.decode_jpeg(image, channels=3)
     image = (tf.cast(image, tf.float32) / 127.5) - 1
@@ -55,8 +54,6 @@ def parse_image_function(example_proto):
 	image = decode_image(example["image"])
 	return image
 
-
-
 def load_dataset(filenames):
   dataset = tf.data.TFRecordDataset(filename)
   dataset = dataset.map(parse_image_function, num_parallel_calls=AUTOTUNE)
@@ -64,7 +61,6 @@ def load_dataset(filenames):
 
 monet_ds= load_dataset("MONET/TFRECORD_PATH.tfrecord").batch(1)
 photo_ds = load_dataset("PHOTO/TFRECOED_PATH.tfrecord").batch(1)
-
 
 for sample in monet_ds.take(1):
   plt.imshow(sample[0])
@@ -81,5 +77,3 @@ plt.imshow(example_monet_image[0] * 0.5 + 0.5)
 plt.subplot(122)
 plt.title('Monet')
 plt.imshow(example_photo_image[0] * 0.5 + 0.5)
-
-
