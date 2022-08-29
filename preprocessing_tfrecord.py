@@ -41,11 +41,23 @@ image_feature_description={
 }
 
 def parse_image_function(example_proto):
-  return tf.io.parse_single_example(example_proto, image_feature_description)
+	"""Only returning images after parsing"""
+	example = tf.io.parse_single_example(example_proto, image_feature_description)
+	image = example["image"]
+
+IMAGE_SIZE = [256, 256]
+def decode_image(image):
+    image = tf.image.decode_jpeg(image, channels=3)
+    image = (tf.cast(image, tf.float32) / 127.5) - 1
+    image = tf.reshape(image, [*IMAGE_SIZE, 3])
+    return image
 
 raw_dataset = tf.data.TFRecordDataset(filename)
 parsed_image_dataset = raw_dataset.map(parse_image_function)
 print(parsed_image_dataset)
 
-
+for sample in parsed_image_dataset.take(1):
+  image = decode_image(sample['image'])
+  plt.imshow(image)
+  plt.axis('off')
 
