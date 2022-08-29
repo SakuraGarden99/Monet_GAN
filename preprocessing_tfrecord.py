@@ -29,6 +29,23 @@ def list_record_features(tfrecords_path):
             features[key] = (kind, size)
     return features
 
-filename = "Path/to/tf_record.tfrecord"
+filename = "PATH/TO/TF_RECORD.tfrecord"
 features = list_record_features(filename)
 print(*features.items(), sep='\n')
+
+# Generated using output from previous function
+image_feature_description={
+    'image_name': tf.io.FixedLenFeature([], tf.string),
+    'image': tf.io.FixedLenFeature([], tf.string),
+    'target' : tf.io.FixedLenFeature([], tf.int64)
+}
+
+def parse_image_function(example_proto):
+  return tf.io.parse_single_example(example_proto, image_feature_description)
+
+raw_dataset = tf.data.TFRecordDataset(filename)
+parsed_image_dataset = raw_dataset.map(parse_image_function)
+print(parsed_image_dataset)
+
+
+
