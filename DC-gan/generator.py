@@ -1,6 +1,5 @@
 import tensorflow as tf
 import glob
-import imageio
 import matplotlib.pyplot as plt
 import numpy as np
 import os
