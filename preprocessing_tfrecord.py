@@ -64,21 +64,23 @@ def load_dataset(filenames):
   dataset = dataset.map(parse_image_function, num_parallel_calls=AUTOTUNE)
   return dataset
 
-monet_ds= load_dataset("MONET/TFRECORD_PATH.tfrecord").batch(1)
-photo_ds = load_dataset("PHOTO/TFRECOED_PATH.tfrecord").batch(1)
+if __name__ == "__main__":
 
-for sample in monet_ds.take(1):
-  plt.imshow(sample[0])
-  plt.axis('off')
+    monet_ds= load_dataset("MONET/TFRECORD_PATH.tfrecord").batch(1)
+    photo_ds = load_dataset("PHOTO/TFRECOED_PATH.tfrecord").batch(1)
 
-# or
-example_monet_image = next(iter(monet_ds))
-example_photo_image = next(iter(photo_ds))
+    for sample in monet_ds.take(1):
+        plt.imshow(sample[0])
+        plt.axis('off')
 
-plt.subplot(121)
-plt.title('Photo')
-plt.imshow(example_monet_image[0] * 0.5 + 0.5)
+    # or
+    example_monet_image = next(iter(monet_ds))
+    example_photo_image = next(iter(photo_ds))
 
-plt.subplot(122)
-plt.title('Monet')
-plt.imshow(example_photo_image[0] * 0.5 + 0.5)
+    plt.subplot(121)
+    plt.title('Photo')
+    plt.imshow(example_monet_image[0] * 0.5 + 0.5)
+
+    plt.subplot(122)
+    plt.title('Monet')
+    plt.imshow(example_photo_image[0] * 0.5 + 0.5)
