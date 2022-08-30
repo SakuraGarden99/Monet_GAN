@@ -6,9 +6,17 @@ import os
 import PIL
 
 AUTOTUNE = tf.data.experimental.AUTOTUNE
+filename = "PATH/TO/TF_RECORD.tfrecord"
 
 #Getting features from tf_record files of dataset
 def list_record_features(tfrecords_path):
+    """
+    Example usage
+    filename = "PATH/TO/TF_RECORD.tfrecord"
+    features = list_record_features(filename)
+    print(*features.items(), sep='\n')
+
+    """
     # Dict of extracted feature information
     features = {}
     # Iterate records
@@ -35,10 +43,6 @@ def list_record_features(tfrecords_path):
             # Save feature data
             features[key] = (kind, size)
     return features
-
-filename = "PATH/TO/TF_RECORD.tfrecord"
-features = list_record_features(filename)
-print(*features.items(), sep='\n')
 
 # Generated using output from previous function
 image_feature_description={
