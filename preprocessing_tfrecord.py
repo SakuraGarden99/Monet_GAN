@@ -1,4 +1,9 @@
 import tensorflow as tf
+import glob
+import matplotlib.pyplot as plt
+import numpy as np
+import os
+import PIL
 
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 
@@ -41,7 +46,7 @@ image_feature_description={
     'image': tf.io.FixedLenFeature([], tf.string),
     'target' : tf.io.FixedLenFeature([], tf.int64)
 }
-
+IMAGE_SIZE = [256,256]
 def decode_image(image):
     image = tf.image.decode_jpeg(image, channels=3)
     image = (tf.cast(image, tf.float32) / 127.5) - 1
