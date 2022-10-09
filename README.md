@@ -1,6 +1,6 @@
 # GAN to create Monet-style arts
 # CycleGAN results after 10 Epochs
-[Google Colab Link](https://colab.research.google.com/drive/18juguK6Gr0hQRfzgPntH_SKsKNU4sl_G?usp=sharing)
+[Google Colab Link](https://colab.research.google.com/drive/1nQ4KUd5pRFpZU3Us3X_kfiYzn77zs1Up?usp=sharing)
 ## Before Training
 ![Before training input and output](CycleGAN/data/before_training.png)
 
