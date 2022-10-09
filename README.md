@@ -11,4 +11,4 @@
 
 ## Monet to photo
 
-![Monet to Photo Conversion](CycleGAN/moent_to_photo.png)
+![Monet to Photo Conversion](CycleGAN/monet_to_photo.png)
