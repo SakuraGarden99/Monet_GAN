@@ -1,5 +1,5 @@
 # GAN to create Monet-style arts
-# CycleGAN results
+# CycleGAN results after 10 Epochs
 ## Before Training
 ![Before training input and output](CycleGAN/before_training.png)
 
