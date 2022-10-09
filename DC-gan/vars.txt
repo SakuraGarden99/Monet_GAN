@@ -1,0 +1,75 @@
+generator_model
+discriminator_model
+
+tutorial_ds
+tutorial_generator_model
+tutorial_discriminator_model
+generator, discriminator
+
+normalization_layer = keras.layers.Rescaling(1./255)
+
+train(tutorial_ds,EPOCHS)
+
+monet_ds = load_data(MONET_PATHS).batch(1)
+monet_ds_norm = monet_ds.map(lambda x : normalization_layer(x))
+tutorial_ds = monet_ds.map(lambda x : resize(x))
+tutorial_ds_norm = tutorial_ds.map(lambda x : normalization_layer(x))
+
+monet_ds
+monet_ds_norm
+tutorial_ds
+tutorial_ds_norm
+
+
+updated_generator_model() 
+	uses input dims of 128
+	tf.random.normal([1,128])
+	
+updated_discriminator_model():
+	takes (256,256,3) image input
+	
+EPOCHS= 50
+TRAIN_DIM= 128
+generated_image = generator(noise)
+
+53:
+
+EPOCHS= 50
+generator = generator_model()
+discriminator = discriminator_model()
+train(tutorial_ds,EPOCHS)
+
+shape = [1, 256,256,3] -> strides=2 -> [1,128,128,128]
+1. filters affecting the last dimension
+2. 256 -> 86 on stride 3
+[1,64,64,filters]	[1,64,64,200]
+
+Conv2D, BatchNormalization, LeakyReLU, Dense, Dropout, Conv2DTranspose, ReLU, Input
+
+train_monet
+train_photo
+generate_images(model)
+
+
+OUTPUT_CHANNELS= 3
+generator_g= unet_generator(output_channels= OUTPUT_CHANNELS)
+generator_f = unet_generator(output_channels= OUTPUT_CHANNELS)
+
+discriminator_x = discriminator(target= False)
+discriminator_y = discriminator(target= False)
+
+discriminator_loss(real, generated)
+generator_loss(preds_generated)		
+
+LAMBDA= 10
+
+cycle_loss(real_image, cycled_image)
+identity_loss(real_image, same_image)
+
+generator_g_optimizer = keras.optimizers.Adam(2e-4, beta_1=0.5)
+generator_f_optimizer = keras.optimizers.Adam(2e-4, beta_1=0.5)
+
+discriminator_x_optimizer = keras.optimizers.Adam(2e-4, beta_1=0.5)
+discriminator_y_optimizer = keras.optimizers.Adam(2e-4, beta_1=0.5)
+
+train_step
