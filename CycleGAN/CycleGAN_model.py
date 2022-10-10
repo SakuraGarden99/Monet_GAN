@@ -256,3 +256,5 @@ class Model:
             self.train_image(self, photo,gen_model)
             print(f"Time for epoch {epoch+1} is : {time.time()- start}")
 
+if __name__ == "__main__":
+    model = Model()
