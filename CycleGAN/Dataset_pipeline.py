@@ -74,4 +74,5 @@ class Dataset_pipeline:
         plt.show()
     
 
-dataset_pipeline = Dataset_pipeline()
+if __name__ == "__main__":
+    dataset_pipeline = Dataset_pipeline()
