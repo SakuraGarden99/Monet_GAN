@@ -1,7 +1,7 @@
 import tensorflow as tf
 from tensorflow import keras 
-from tensorflow.keras import layers
-import tensorflow_datasets as tfds
+from tensorflow.keras import layers #?
+import tensorflow_datasets as tfds          # Not installed now
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -67,7 +67,7 @@ class Dataset_pipeline:
         image = self.normalize(image)
         return image
 
-    def plot_sample(self, dataset,):
+    def plot_sample(self, dataset):
         sample= next(iter(dataset))
         plt.imshow(sample[0]*0.5 + 0.5)
         plt.axis('off')
