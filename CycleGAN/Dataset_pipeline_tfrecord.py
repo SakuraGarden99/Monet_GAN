@@ -44,8 +44,9 @@ class dataset_pipeline():
             path_list.append(os.path.join(directory_path, path))
         return path_list
 
-    def load_tfrecord_dataset(self, paths):
-        """paths : list of paths of all tfrecords."""
+    def load_tfrecord_dataset(self, directory_path):
+        """directory_path : list of paths of all tfrecords."""
+        paths = get_paths(directory_path)
         dataset = tf.tf.data.TFRecordDataset(paths)
         dataset = dataset.map(self.parse_image, num_parallel_calls= tf.data.AUTOTUNE)
         dataset = dataset.map(self.random_augment, num_parallel_calls= tf.data.AUTOTUNE)
