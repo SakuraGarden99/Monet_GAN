@@ -118,7 +118,7 @@ class Model:
         x= inputs
 
         skips= []
-          	
+
 
         for down in down_stack:            
             x = down(x)			
@@ -254,7 +254,7 @@ class Model:
             for image_x, image_y in tf.data.Dataset.zip((train_x, train_y)):
                 self.train_step(image_x, image_y)
             clear_output(wait=True)
-            self.train_image(self, photo,gen_model)
+            self.train_image(photo,gen_model)
             print(f"Time for epoch {epoch+1} is : {time.time()- start}")
 
 if __name__ == "__main__":
