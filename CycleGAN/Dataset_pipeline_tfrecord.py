@@ -1,6 +1,6 @@
 import tensorflow as tf
 from tensorflow import keras 
-from tensorflow.keras import layers #?
+from tensorflow.keras import layers
 import tensorflow_datasets as tfds          # Not installed now
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,6 +16,8 @@ class dataset_pipeline():
             'target' : tf.io.FixedLenFeature([], tf.string)
         }
         self.IMAGE_SIZE= [256,256]
+        self.IMG_HEIGHT = 256
+        self.IMG_WIDTH = 256
 
     def decode_image(self, image):
         """Decoding image from tf.string form representation from tfrecord"""
@@ -47,7 +49,7 @@ class dataset_pipeline():
     def load_tfrecord_dataset(self, directory_path):
         """directory_path : list of paths of all tfrecords."""
         paths = get_paths(directory_path)
-        dataset = tf.tf.data.TFRecordDataset(paths)
+        dataset = tf.data.TFRecordDataset(paths)
         dataset = dataset.map(self.parse_image, num_parallel_calls= tf.data.AUTOTUNE)
         dataset = dataset.map(self.random_augment, num_parallel_calls= tf.data.AUTOTUNE)
         return dataset
