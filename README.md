@@ -6,7 +6,7 @@
 
 ## After Training
 ![After Training input and output](CycleGAN/data/after_training.png)
-
+![after_training](https://github.com/Aazat/Monet_GAN/assets/138879124/423f39ab-34e7-4343-990e-69a288be71a0)
 ## Photo to Monet 
 
 ![Photo to Monet Conversion](CycleGAN/data/photo_to_monet.png)
